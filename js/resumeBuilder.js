@@ -107,7 +107,7 @@ bio.display = function() {
   var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
   var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
 
-  $("#topContacts,#footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedLocation);
+  $("#topContacts,#footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
  };
 
 
