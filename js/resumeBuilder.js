@@ -6,13 +6,13 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
  "name": "Abhinav Raj",
  "role": "Web Developer",
- "contacts": [{
+ "contacts": {
   "mobile": "9975063684",
   "email": "abhinav.raj0509@gmail.com",
   "twitter": "_ItsAbhinav",
   "github": "abhinav0509",
   "location": "NewDelhi"
- }],
+ },
 
  "welcomeMessage": "Imagine Create Inspire",
  "image": "images/mypic4.jpg",
@@ -54,7 +54,7 @@ var work = {
  "jobs": [{
    "employer": "CSC e-governance India",
    "title": "Software Engineer",
-   "location": "NewDelhi",
+   "location": "New Delhi",
    "dates": "Oct-2015",
    "description": "This was my first company in tech I worked extensively on CodeIgniter framework for php.I also designed various HTML forms as per requirement."
   }
@@ -100,17 +100,14 @@ bio.display = function() {
   $("#skills").append(formattedSkill);
  };
 
- for (contact in bio.contacts) {
-  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
-  var formattedEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
-  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[contact].twitter);
-  var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[contact].github);
-  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
 
-  $("#topContacts,#footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
- };
+ var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+ var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+ var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+ var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+ var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
-
+ $("#topContacts,#footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
 
 
 };
@@ -143,7 +140,7 @@ education.display = function() {
 
  }
 
-}
+};
 
 work.display = function() {
  for (job in work.jobs) {
@@ -182,7 +179,7 @@ projects.display = function() {
 
  }
 
-}
+};
 
 
 bio.display();
