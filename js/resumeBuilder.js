@@ -18,7 +18,7 @@ var bio = {
  "image": "images/mypic4.jpg",
  "skills": ["HTML", "CSS", "JavaScript", "jQuery", "Java"]
 
-}
+};
 
 var education = {
  "schools": [{
@@ -63,7 +63,7 @@ var work = {
  ]
 
 
-}
+};
 
 var projects = {
  "project": [{
@@ -85,7 +85,7 @@ var projects = {
  ]
 
 
-}
+};
 bio.display = function() {
  var formattedName = HTMLheaderName.replace("%data%", bio.name);
  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -95,10 +95,10 @@ bio.display = function() {
  $("#header").prepend(formattedRole).prepend(formattedName).append(formattedImage, formattedMessage);
  $("#header").append(HTMLskillsStart);
 
- for (skill in bio.skills) {
+ for (var skill in bio.skills) {
   var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
   $("#skills").append(formattedSkill);
- };
+ }
 
 
  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -113,7 +113,7 @@ bio.display = function() {
 };
 
 education.display = function() {
- for (school in education.schools) {
+ for (var school in education.schools) {
   $("#education").append(HTMLschoolStart);
 
   var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -125,17 +125,17 @@ education.display = function() {
   //console.log(formattedSchoolName+formattedLocation+formattedDegree);
 
   $(".education-entry:last").append(formattedSchoolName + formattedDegree, formattedDates, formattedLocation, formattedMajor);
- };
+ }
  $("#education").append(HTMLonlineClasses);
- for (course in education.onlineCourses) {
+ for (var course in education.onlineCourses) {
   var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
-  var formattedSchoolName = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-  var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+  var formattedOnlineSchoolName = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+  var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
   var url = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
 
   $("#education").append(HTMLschoolStart);
   var online_section = $("div.education-entry:last");
-  online_section.append(formattedTitle, formattedSchoolName, formattedDates, url);
+  online_section.append(formattedTitle, formattedOnlineSchoolName, formattedOnlineDates, url);
 
 
  }
@@ -143,7 +143,7 @@ education.display = function() {
 };
 
 work.display = function() {
- for (job in work.jobs) {
+ for (var job in work.jobs) {
   $("#workExperience").append(HTMLworkStart);
   var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
   var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -151,21 +151,21 @@ work.display = function() {
   var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
   var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-  $(".work-entry:last").append(formattedEmployer + formattedTitle, formattedDates, formattedDescription);
+  $(".work-entry:last").append(formattedEmployer + formattedTitle, formattedDates, formattedDescription, formattedLocation);
 
  }
 
-}
+};
 projects.display = function() {
- for (entry in projects.project) {
+ for (var entry in projects.project) {
   $("#projects").append(HTMLprojectStart);
   var projectTitle = HTMLworkTitle.replace("%data%", projects.project[entry].title);
   var projectDates = HTMLprojectDates.replace("%data%", projects.project[entry].dates);
   var projectDesc = HTMLprojectDescription.replace("%data%", projects.project[entry].description);
-  //console.log(projectTitle+projectDates+projectDesc);
+
   $(".project-entry:last").append(projectTitle, projectDates, projectDesc);
 
-  for (image in projects.project[entry].images) {
+  for (var image in projects.project[entry].images) {
    var projectImage = HTMLprojectImage.replace("%data%", projects.project[entry].images[image]);
    //console.log(projectImage);
    $(".project-entry:last").append(projectImage);
